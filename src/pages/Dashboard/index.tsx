@@ -22,7 +22,7 @@ import api from '../../services/api';
 
 interface MonthAvailabilityItem {
   day: number;
-  avaiable: boolean;
+  available: boolean;
 }
 
 const Dashboard: React.FC = () => {
@@ -58,7 +58,7 @@ const Dashboard: React.FC = () => {
 
   const disableDays = useMemo(() => {
     const dates = monthAvailability
-      .filter(monthDay => monthDay.avaiable === false)
+      .filter(monthDay => monthDay.available === false)
       .map(monthDay => {
         const year = currentMonth.getFullYear();
         const month = currentMonth.getMonth();
