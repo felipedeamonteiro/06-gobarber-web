@@ -43,7 +43,7 @@ const Profile: React.FC = () => {
             .email('Digite uma e-mail válido'),
           old_password: Yup.string(),
           password: Yup.string().when('old_password', {
-            is: val => !!val.length,
+            is: (val: any) => !!val.length,
             then: Yup.string()
               .required('Campo obrigatório')
               .min(6, 'No mínimo 6 caracteres'),
@@ -51,7 +51,7 @@ const Profile: React.FC = () => {
           }),
           password_confirmation: Yup.string()
             .when('old_password', {
-              is: val => !!val.length,
+              is: (val: any) => !!val.length,
               then: Yup.string()
                 .required('Campo obrigatório')
                 .min(6, 'No mínimo 6 caracteres'),
@@ -64,13 +64,8 @@ const Profile: React.FC = () => {
           abortEarly: false,
         });
 
-        const {
-          name,
-          email,
-          old_password,
-          password,
-          password_confirmation,
-        } = data;
+        const { name, email, old_password, password, password_confirmation } =
+          data;
 
         const formData = {
           name,
